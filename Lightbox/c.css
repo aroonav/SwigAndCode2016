@@ -1,0 +1,18 @@
+#page-cover {
+    background-color: #888; 
+    display: none; 
+    position: absolute; 
+    width: 100%; 
+    height: 100%
+}
+#uncloseable-lightbox {
+    background-color: #000;
+    height: 200px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 500px;
+}
+#uncloseable-lightbox button { position: absolute }
+#uncloseable-lightbox #close-button { top: 10px; right: 10px;}
+#uncloseable-lightbox #click-first-button { bottom: 10px; left: 10px;}
