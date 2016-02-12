@@ -42,11 +42,6 @@
 #timer {
     margin-top:10px;
 }
-
-#question{
-    
-}
-
 </style>
 <script type="text/javascript">
 // how many minutes
@@ -54,13 +49,58 @@ var mins = 1;
 
 // how many seconds (don't change this)
 var secs = mins * 60;
+function countdown() {
+	setTimeout('Decrement()',0);
+}
+function Decrement() {
+	if (document.getElementById) {
+		minutes = document.getElementById("minutes");
+		seconds = document.getElementById("seconds");
+		// if less than a minute remaining
+		if (seconds < 59) {
+			seconds.value = secs;
+		} else {
+			minutes.value = getminutes();
+			seconds.value = getseconds();
+		}
+		secs--;
+		if(minutes.value!=0 || seconds.value!=0)
+			setTimeout('Decrement()',1000);
+		else
+		    document.getElementById("page-cover").style.display="block";
+	    
+	}
+}
+function getminutes() {
+	// minutes is seconds divided by 60, rounded down
+	mins = Math.floor(secs / 60);
+	return mins;
+}
+function getseconds() {
+	// take mins remaining (as seconds) away from total seconds remaining
+	return secs-Math.round(mins *60);
+}
+function closediv() {
+    var ans = document.getElementById("input_ans").value;
+	if (ans == "xyz") {
+		document.getElementById("page-cover").style.display="none";
+		mins = 1;secs = mins * 60;
+		countdown();
+	}
+}
 
 </script>
 
 </head>
-  <body>
-
-    <div id="question">Q-1 > this is the question</div><br>
+  <body onload="countdown();">
+    <div id="page-cover">
+    <div id="uncloseable-lightbox">
+        <form action="" id="answer">
+           <input type="text" id="input_ans">
+        </form> 
+        <button id="click-first-button" onclick="closediv();">SUBMIT</button>
+    </div>
+</div>
 
     <form id="buttons">
       <fieldset>
@@ -68,13 +108,22 @@ var secs = mins * 60;
         <input id="open-dilg" type="file" name="files[]"> 
 
         <!-- <a href="#" id="new-btn">New</a> -->
-        <a href="#" id="save-btn" title="Ctrl-S">Submit</a>
+        <a href="#" id="open-btn" title="Ctrl-O">Open</a>
+        <a href="#" id="save-btn" title="Ctrl-S">Save</a>
         
         <input type="text" placeholder="File Name" id="file-name">
         <!-- <select id="files-list"></select> -->
 
       </fieldset>
       <p id="status-bar"></p>
+      <fieldset id="timer">
+
+		Time Left: <input id="minutes" type="text" style="width: 22px;" readonly> minutes <input id="seconds" type="text" style="width: 22px" readonly> seconds remaining.
+        <!--<a href="#"><button id="open-button">Open</button></a>-->
+        <!--<a href="#" id="mkdn-btn"></a>
+        <a href="#" id="spell-btn"></a>-->
+
+      </fieldset>
     </form>
 
     <textarea id="edit-box" placeholder="Type Here..." autofocus></textarea>

@@ -1,0 +1,105 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  font-family: sans-serif;
+}
+*:focus {
+  outline: none;
+}
+#buttons {
+  border-bottom: 1px solid rgba(0, 0, 15, .3);
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 100%;
+  background-color: white;
+}
+#buttons fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+#buttons fieldset:first-child {
+  float: left;
+}
+#buttons fieldset:last-child {
+  float: right;
+}
+[id*=btn], #buttons #file-name, #status-bar {
+  display: inline-block;
+  height: 40px;
+  padding: 10px 15px;
+  margin: 0;
+  border: none;
+  font-size: 1em;
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+[id*=btn] {
+  background-color: rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+[id*=btn]:hover {
+  background-color: rgba(0, 0, 50, .15);
+  color: rgba(0, 0, 15, .7);
+}
+#buttons #file-name {
+  border-left: 1px solid rgba(0, 0, 0, .1);
+  border-right: 1px solid rgba(0, 0, 0, .1);
+  height: 100%;
+  margin: 0;
+  position: relative;
+  top: 1px;
+}
+#open-dilg {
+  position: fixed;
+  opacity: 0;
+  z-index: -100;
+}
+#edit-box {
+  width: 100%;
+  height: calc(100% - 40px);
+  margin: 0;
+  padding: 10px;
+  overflow: auto;
+  font-size: 1.1em;
+  white-space: pre-wrap;
+  border: none;
+  resize: none;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+#edit-box.mkdn-on {
+  width: 50%;
+  float: left;
+  border-right: 1px dashed rgba(0, 0, 0, 0.7);
+}
+#mkdn-box {
+  width: 50%;
+  height: calc(100% - 40px);
+  margin: 0;
+  padding: 0 10px;
+  overflow: auto;
+  font-size: 1.1em;
+  border: none;
+  display: none;
+  box-sizing: border-box;
+}
+
+#status-bar {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#status-bar.on {
+  opacity: 1;
+}
+
+@media print {
+  html, body { overflow: visible; }
+  #buttons, #edit-box { display: none; }
+  #mkdn-box { display: block !important; width: 100%; overflow: visible; }
+}
