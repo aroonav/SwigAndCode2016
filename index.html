@@ -49,35 +49,24 @@
 
 </style>
 <script type="text/javascript">
-// how many minutes
-var mins = 1;
-
-// how many seconds (don't change this)
-var secs = mins * 60;
 
 </script>
 
 </head>
   <body>
-
     <div id="question">Q-1 > this is the question</div><br>
-
-    <form id="buttons">
+    <form action="welcome.php" method="post" id="buttons">
       <fieldset>
-
-        <input id="open-dilg" type="file" name="files[]"> 
-
         <!-- <a href="#" id="new-btn">New</a> -->
-        <a href="#" id="save-btn" title="Ctrl-S">Submit</a>
-        
-        <input type="text" placeholder="File Name" id="file-name">
+        <input type="submit" id="save-btn" title="Ctrl-S" value="Submit Code" >
+        <input type="text" placeholder="File Name" id="file-name" name="file_name">
+        <textarea name="code" rows="22" cols="60" id="edit-box" placeholder="Type Here..." autofocus></textarea>
+        <!-- <input type="text" id="edit-box" placeholder="Type Here..." autofocus> -->
         <!-- <select id="files-list"></select> -->
-
       </fieldset>
       <p id="status-bar"></p>
     </form>
-
-    <textarea id="edit-box" placeholder="Type Here..." autofocus></textarea>
+    <!-- <textarea id="edit-box" placeholder="Type Here..." autofocus></textarea> -->
     <div id="mkdn-box"></div>
 
   </body>
