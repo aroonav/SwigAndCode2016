@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Notepad</title>
+    <meta name="description" content="A simple notepad.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/jquery.min.js"></script>
+<style>
+  #page-cover {
+    background-color: #888; 
+    display: none; 
+    position: absolute; 
+    z-index: 50;
+    width: 100%; 
+    height: 100%;
+}
+#uncloseable-lightbox {
+    margin:auto;
+    margin-top:10%;
+    background-color: #000;
+    height: 200px;
+    position: relative;
+    width: 500px;
+}
+#uncloseable-lightbox button { position: absolute }
+#uncloseable-lightbox #close-button { top: 10px; right: 10px;}
+#uncloseable-lightbox #click-first-button { bottom: 10px; left: 10px;}
+
+#input_ans {
+	position:relative;
+	top: 40px;
+	left:40px;
+}
+#timer {
+    margin-top:10px;
+}
+
+#question{
+    
+}
+
+</style>
+<script type="text/javascript">
+
+</script>
+
+</head>
+  <body>
+    <div id="question">
+<br><br>    In his book The Blind Watchmaker, Richard Dawkins says:
+
+<br><br>    I don’t know who it was first pointed out that, given enough time, a monkey bashing away at random on a typewriter could produce all the works of Shakespeare. The operative phrase is, of course, given enough time. Let us limit the task facing our monkey somewhat. Suppose that he has to produce, not the complete works of Shakespeare but just the short sentence ‘Methinks it is like a weasel’, and we shall make it relatively easy by giving him a typewriter with a restricted keyboard, one with just the 26 (capital) letters, and a space bar. How long will he take to write this one little sentence?
+
+<br><br>(All of our quotes are shamelessly stolen from Wikipedia.) Then Dawkins suggests that this is a bad analogy for evolution, and proposes this alternative:
+
+<br><br>    We again use our computer monkey, but with a crucial difference in its program. It again begins by choosing a random sequence of 28 letters, just as before … it duplicates it repeatedly, but with a certain chance of random error – ‘mutation’ – in the copying. The computer examines the mutant nonsense phrases, the ‘progeny’ of the original phrase, and chooses the one which, however slightly, most resembles the target phrase, METHINKS IT IS LIKE A WEASEL.
+
+<br><br>Then he discusses a computer program that simulates his monkey, which he says took half an hour to run because it was written BASIC; when he rewrote his program in Pascal the runtime dropped to eleven seconds. His program used this algorithm:
+
+<br><br>    Start with a random string of 28 characters.
+    Make 100 copies of the string (reproduce).
+    For each character in each of the 100 copies, with a probability of 5%, replace (mutate) the character with a new random character.
+    Compare each new string with the target string “METHINKS IT IS LIKE A WEASEL”, and give each a score (the number of letters in the string that are correct and in the correct position).
+    If any of the new strings has a perfect score (28), halt. Otherwise, take the highest scoring string, and go to step 2.
+
+<br><br>Your task is to write a program to simulate Dawkins’ monkey.
+
+    </div><br>
+    <form action="welcome.php" method="post" id="buttons">
+      <fieldset>
+        <!-- <a href="#" id="new-btn">New</a> -->
+        <input type="submit" id="save-btn" title="Ctrl-S" value="Submit Code" >
+        <input type="text" placeholder="File Name" id="file-name" name="file_name">
+        <textarea name="code" rows="22" cols="60" id="edit-box" placeholder="Type Here..." autofocus></textarea>
+        <!-- <input type="text" id="edit-box" placeholder="Type Here..." autofocus> -->
+        <!-- <select id="files-list"></select> -->
+      </fieldset>
+      <p id="status-bar"></p>
+    </form>
+    <!-- <textarea id="edit-box" placeholder="Type Here..." autofocus></textarea> -->
+    <div id="mkdn-box"></div>
+
+  </body>
+</html>

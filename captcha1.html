@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Notepad</title>
+    <meta name="description" content="A simple notepad.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/jquery.min.js"></script>
+<style>
+  #page-cover {
+    background-color: #888; 
+    display: none; 
+    position: absolute; 
+    z-index: 50;
+
+    width: 100%; 
+    height: 100%;
+}
+#uncloseable-lightbox {
+    margin:auto;
+    margin-top:10%;
+    background-color: #000;
+    height: 200px;
+    position: relative;
+    width: 500px;
+}
+#uncloseable-lightbox button { position: absolute }
+#uncloseable-lightbox #close-button { top: 10px; right: 10px;}
+#uncloseable-lightbox #click-first-button { bottom: 10px; left: 10px;}
+
+#input_ans {
+	position:relative;
+	top: 40px;
+	left:40px;
+}
+#timer {
+    margin-top:10px;
+}
+
+#question{
+    
+}
+
+</style>
+<script type="text/javascript">
+
+</script>
+
+</head>
+  <body>
+    <div id="question">
+
+<br><br>A binary string of length N is a string of N characters, where each character is either 0 or 1.
+
+<br>There exists a function named fun1() which maintains a list named binStrings, consisting of all 2^N N-digit(as N places can be filled in 2 ways each) binary strings. 
+<br>For each string X in binStrings, fun1() executes a function fun2(X), defined as follows (psuedocode):
+<br>&nbsp&nbsp    bool fun2(x):
+<br>&nbsp&nbsp&nbsp&nbsp    //note the zero indexing
+<br>&nbsp&nbsp&nbsp&nbsp    n = length(x)
+<br>&nbsp&nbsp&nbsp&nbsp    counter = 0
+<br>&nbsp&nbsp&nbsp&nbsp    FOR i = 1 to n-1
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    IF x[i] == '0' and x[i - 1] == '0'
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp            INCREMENT counter
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp            END IF
+<br>&nbsp&nbsp&nbsp&nbsp    ENDFOR
+<br>&nbsp&nbsp&nbsp&nbsp    return (counter == 1)
+<br>Now, fun1() stores an element X in a new list, binTrues if fun2(X) returns True for that X. 
+<br>In other-words, binTrues consists of all the elements X in binStrings such that fun2(X) returns True.
+<br>Calculate the length of binTrues for each N.
+    I/P         2   3
+    O/P         1   2
+<br>Explanation:
+<br>When N=2, the list binStrings is equal to ['00', '01', '10', '11'].
+<br>Calling fun2() on each element in binStrings, the function only returns true when X is equal to 00. When X = 01, 10, 11, the counter in fun2() is equal to 0.
+<br>Therefore, binTrues is equal to ['00'], and has a length of 1.
+<br>When N=3, the list binStrings is equal to ['000', '001', '010', '100', '011', '101', '110', '111'].
+<br>Calling fun2() on each element in binStrings, the function only returns true when X is equal to 001 or100.
+<br>Therefore, binTrues is equal to ['001', '100'], and has a length of 2.
+
+<br>Bonus Criteria : lists can get large,so output your answer modulo 10^9+7=1000000007
+    </div><br>
+    <form action="welcome.php" method="post" id="buttons">
+      <fieldset>
+        <!-- <a href="#" id="new-btn">New</a> -->
+        <input type="submit" id="save-btn" title="Ctrl-S" value="Submit Code" >
+        <input type="text" placeholder="File Name" id="file-name" name="file_name">
+        <textarea name="code" rows="22" cols="60" id="edit-box" placeholder="Type Here..." autofocus></textarea>
+        <!-- <input type="text" id="edit-box" placeholder="Type Here..." autofocus> -->
+        <!-- <select id="files-list"></select> -->
+      </fieldset>
+      <p id="status-bar"></p>
+    </form>
+    <!-- <textarea id="edit-box" placeholder="Type Here..." autofocus></textarea> -->
+    <div id="mkdn-box"></div>
+
+  </body>
+</html>
